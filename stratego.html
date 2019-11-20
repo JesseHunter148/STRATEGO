@@ -9,24 +9,23 @@
 <body>
 
     <script>
-        function makeBoardWithoutJQuery(xs, ys) {
-
-var table = document.createElement('table');
-var tbody = document.createElement('tbody');
-
-for (var y=0; y<ys; ++y) {
-    var tr = document.createElement('tr');
-    for (var x=0; x<xs; ++x) {
-        var td = document.createElement('td');
+        function makeBoard(xs, ys) {
+            var table = document.createElement('table');
+            var tbody = document.createElement('tbody');
+        for (var y=0; y<ys; ++y) {
+            var tr = document.createElement('tr');
+        for (var x=0; x<xs; ++x) {
+            var td = document.createElement('td');
         td.innerHTML = (y*xs) + x;
         tr.appendChild(td);
-    }
-    tbody.appendChild(tr);
-}
+        }
+        tbody.appendChild(tr);
+        }
+        table.appendChild(tbody);
+        return table;
+        }
 
-table.appendChild(tbody);
-return table;
-}
+        makeBoard();
         
     </script>
 
