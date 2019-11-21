@@ -8,26 +8,9 @@
 </head>
 <img align="center" src="https://lh3.googleusercontent.com/_FivxDzS5veuRB8W6Sse2Ml3jF3zyEm9w3eRSjixuiVew6yTSGW0DrIBDAigytuIKWsBboBQVZWP6jX8mC_JB1WrM5KKjrz0eVzKQmDnpndKeccOtz4u7YP60Ssy08N3VAYK493l" alt="">
 <body>
-
-    <script>
-        function makeBoard(xs, ys) {
-            var table = document.createElement('table');
-            var tbody = document.createElement('tbody');
-        for (var y=0; y<ys; ++y) {
-            var tr = document.createElement('tr');
-        for (var x=0; x<xs; ++x) {
-            var td = document.createElement('td');
-        td.innerHTML = (y*xs) + x;
-        tr.appendChild(td);
-        }
-        tbody.appendChild(tr);
-        }
-        table.appendChild(tbody);
-        return table;
-        }
-
-        makeBoard();
         
+    <script>
+    document.body.style.backgroundColor = "black";
     </script>
 
 </body>
