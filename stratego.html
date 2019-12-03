@@ -18,19 +18,20 @@ img {
 
 <body>
 
-    <map name="boardGame">
+    <map name="boardGame" id="boardGame">
 
     </map>
 
     <script>
-let sqrSize = 29
+let m = document.getElementById("boardGame"),
+sqrSize = 29,
 yEnd = 498,
 yStart = 71,
 xStart = 81,
 xEnd = 860;
 for(let y = yStart ; y <= yEnd ; y += sqrSize){
     for(let x = xStart ; x <= xEnd ; x += sqrSize){
-        fillrect(x,y,sqrSize,sqrSize)
+        m.appendChild(x,y,sqrSize,sqrSize)
     }
 }
     document.body.style.backgroundColor = "#2e2e2e";
