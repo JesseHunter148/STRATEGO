@@ -19,10 +19,13 @@ img {
 <body>
 
     <map name="boardGame" id="boardGame">
-
+        <area shape="rect" coords="0,0,82,126" href="sun.htm" alt="Sun">
+  
     </map>
 
-    <script>
+    <script>    
+    document.body.style.backgroundColor = "#2e2e2e";
+    
 let m = document.getElementById("boardGame"),
 sqrSize = 29,
 yEnd = 498,
@@ -31,10 +34,17 @@ xStart = 81,
 xEnd = 860;
 for(let y = yStart ; y <= yEnd ; y += sqrSize){
     for(let x = xStart ; x <= xEnd ; x += sqrSize){
-        m.appendChild(x,y,sqrSize,sqrSize)
+        let square = document.createElement("area");
+            //modify squares parameters here e.g. :
+            square.setAttribute("shape", "rect");
+            square.setAttribute("coords", `${x},${y},${sqrSize},${sqrSize}`);
+            square.setAttribute("href", "board.htm");
+            square.setAttribute("alt", "BOARD");
+
+        m.appendChild(square);
     }
 }
-    document.body.style.backgroundColor = "#2e2e2e";
+
 </script>
 
 </body>
