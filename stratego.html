@@ -23,11 +23,17 @@ img {
     </map>
 
     <script>
-
+let sqrSize = 25,
+yEnd = 498,
+yStart = 71,
+xStart = 81,
+xEnd = 860;
+for(let y = yStart ; y <= yEnd ; y += sqrSize){
+    for(let x = xStart ; x <= xEnd ; x += sqrSize){
+        c.fill rect(x,y,sqrSize,sqrSize)
+    }
+}
     document.body.style.backgroundColor = "#2e2e2e";
-
-    
-
     </script>
 
 </body>
