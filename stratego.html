@@ -31,7 +31,8 @@ sqrSize = 49,
 yEnd = 974,
 yStart = 69,
 xStart = 113,
-xEnd = 1474
+xEnd = 1474,
+boxId = 0;
 for(let y = yStart ; y <= yEnd ; y += sqrSize){
     for(let x = xStart ; x <= xEnd ; x += sqrSize){
         let square = document.createElement("area");
@@ -40,8 +41,10 @@ for(let y = yStart ; y <= yEnd ; y += sqrSize){
             square.setAttribute("coords", `${x},${y},${x+sqrSize},${y+sqrSize}`);
             square.setAttribute("href", "board.htm");
             square.setAttribute("alt", "BOARD");
+            square.setAttribute("id",`box${boxId}`)
 
         m.appendChild(square);
+        boxId++;
     }
 }
 
