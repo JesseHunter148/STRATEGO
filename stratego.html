@@ -8,12 +8,12 @@
 
 </head>
 
-<img id = 'BOARD' src="https://lh5.googleusercontent.com/zf6_9HPzuhQmPN51fR5UyilDurwHrMlhir8dCcOCQQ-QX4qVZU8xK1BSagvPVrE22OAXd61zeS28evjD4yHrwYy2dc7YpBw4rb40mvZ-7U2t_qp1q7JT6Nf8c8F3GqGDVBeFeP4J" alt="BOARD" usemap="#boardGame">
 <style> 
+
 img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 </style>
@@ -25,15 +25,17 @@ img {
     </map>
 
     <script>    
-    document.body.style.backgroundColor = "#2e2e2e";
+
+document.body.style.backgroundColor = "#2e2e2e";
     
 let m = document.getElementById("boardGame"),
-sqrSize = 49,
-yEnd = 974,
-yStart = 69,
-xStart = 113,
-xEnd = 1474,
-boxId = 0;
+    sqrSize = 49,
+    yEnd = 974,
+    yStart = 69,
+    xStart = 113,
+    xEnd = 1474,
+    boxId = 0;
+
 for(let y = yStart ; y <= yEnd ; y += sqrSize){
     for(let x = xStart ; x <= xEnd ; x += sqrSize){
         let square = document.createElement("area");
