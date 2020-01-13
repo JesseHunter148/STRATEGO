@@ -217,6 +217,25 @@ let m = document.getElementById("boardGame"),
 //         boxId++;
 //     }
 // }
+let player1 = {
+    color : "blue",
+    pawns : {
+        flag : {name : "flag", abr : "F",  loc : 440},
+    }
+}
+for(key in player1.pawns){
+    console.log(typeof(pawns));
+    let targetSpace = document.getElementById(`box-${key.loc}`)
+    let newDiv = document.createElement("div");
+    console.log(newDiv);
+
+    newDiv.className = `${player1.color}Piece`;
+    newDiv.id = `${player1.color}${key.name}`;
+    newDiv.innerHTML = `<span>${key.abr}</span>`;
+
+    targetSpace.appendChild(newDiv);
+
+}
 
 var i = 1,
     rows = 19,
@@ -239,8 +258,6 @@ for(let y = 0; y <= rows ; y++){
     boardDiv.appendChild(r);
     
 }
-
-
 
 </script>
 
