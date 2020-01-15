@@ -186,6 +186,27 @@ div.square:hover  {
     <script>    
 
 document.body.style.backgroundColor = "#2e2e2e";
+var i = 1,
+    rows = 19,
+    cols = 28,
+    boardDiv =  document.getElementById("board");
+//---------CREATES GRID-------//
+for(let y = 0; y <= rows ; y++){
+    let r = document.createElement("div");
+        r.setAttribute("class", "row");
+        r.addEventListener("click", dropPiece)
+    for(let x = 0 ; x <= cols ; x++ ){
+        let square = document.createElement("div");
+            //modify squares parameters here e.g. :
+            square.setAttribute("class", "square");
+            square.setAttribute("id", `box-${i}`);
+            
+        r.appendChild(square);
+        i++;
+    }
+    boardDiv.appendChild(r);
+    
+}
 
 function pickUpPiece(){
     console.log("Picked up")
@@ -217,16 +238,28 @@ let m = document.getElementById("boardGame"),
 //         boxId++;
 //     }
 // }
-let player1 = {
-    color : "blue",
-    pawns : {
-        flag : {name : "flag", abr : "F",  loc : 440},
-    }
-}
-for(key in player1.pawns){
-    console.log(typeof(pawns));
+const player1 = { 
+        color : "blue",
+        pawns : [{
+                    name : "flag",
+                    abr : "F",
+                    loc: 440
+                }]
+        }
+
+
+// let player1 = {
+//     color : "blue",
+//     pawns : {
+//         flag : {name : "flag", abr : "F",  loc : 440},
+//     }
+// }
+for(key of player1.pawns){
+    
+    console.log(`box-${key.loc}`);
     let targetSpace = document.getElementById(`box-${key.loc}`)
     let newDiv = document.createElement("div");
+    console.log(key.loc)
     console.log(newDiv);
 
     newDiv.className = `${player1.color}Piece`;
@@ -237,27 +270,7 @@ for(key in player1.pawns){
 
 }
 
-var i = 1,
-    rows = 19,
-    cols = 28,
-    boardDiv =  document.getElementById("board");
 
-for(let y = 0; y <= rows ; y++){
-    let r = document.createElement("div");
-        r.setAttribute("class", "row");
-        r.addEventListener("click", dropPiece)
-    for(let x = 0 ; x <= cols ; x++ ){
-        let square = document.createElement("div");
-            //modify squares parameters here e.g. :
-            square.setAttribute("class", "square");
-            square.setAttribute("id", `box-${i}`);
-            
-        r.appendChild(square);
-        i++;
-    }
-    boardDiv.appendChild(r);
-    
-}
 
 </script>
 
