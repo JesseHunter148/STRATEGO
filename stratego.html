@@ -8,8 +8,6 @@
 
 </head>
 <div id="container">
-    <!-- <img id = 'BOARD'                         style = "position: relative" src="https://lh5.googleusercontent.com/zf6_9HPzuhQmPN51fR5UyilDurwHrMlhir8dCcOCQQ-QX4qVZU8xK1BSagvPVrE22OAXd61zeS28evjD4yHrwYy2dc7YpBw4rb40mvZ-7U2t_qp1q7JT6Nf8c8F3GqGDVBeFeP4J" alt="BOARD" usemap="#boardGame"> -->
-    <!-- <div id = 'redFlag'         50px" src="https://lh6.googleusercontent.com/RswJ9_72LunChyVXV4VVJ3CHwYFAOKrB8PrKcldh-dlzfu2Arxfat8eJRmhS_XnpKhT1OqMkIOPGMVB-g0pqUUfXKVl9A4wZ15HTKrwiWcf_ropbnQn0R_dya-FAvvLiPTr1J0hR" alt="redFlag"> -->
     <div id = 'redFlag' class="redPiece" onclick='pickUpPiece(this)'draggable="true"><span>F</span></div>
     <div id = 'redBomb1' class="redPiece" onclick='pickUpPiece(this)'><span>B</B></span></div>
     <div id = 'redBomb2' class="redPiece" onclick='pickUpPiece(this)'><span>B</span></div        >
@@ -93,22 +91,13 @@
     
 </div><span>F</span></div>
 
-
 <style> 
-
-/* div {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-} */
 
 #container {
     position: relative;
     width: 1600px;
     margin: 0 auto;
 }
-
-
 
 .redPiece {
     background-color: rgb(117, 0, 0);
@@ -173,12 +162,6 @@ div.square:hover  {
 
 <body>
 
-    <!-- <map name="boardGame" id="boardGame">
-      
-    </map> -->
-
-
-
 <div id="board">
 
 </div>
@@ -205,7 +188,6 @@ for(let y = 0; y <= rows ; y++){
         i++;
     }
     boardDiv.appendChild(r);
-    
 }
 
 function pickUpPiece(){
@@ -224,20 +206,7 @@ let m = document.getElementById("boardGame"),
     xEnd = 1474,
     boxId = 0;
 
-// for(let y = yStart ; y <= yEnd ; y += sqrSize){
-//     for(let x = xStart ; x <= xEnd ; x += sqrSize){
-//         let square = document.createElement("area");
-//             //modify squares parameters here e.g. :
-//             square.setAttribute("shape", "rect");
-//             square.setAttribute("coords", `${x},${y},${x+sqrSize},${y+sqrSize}`);
-//             square.setAttribute("href", "board.htm");
-//             square.setAttribute("alt", "BOARD");
-//             square.setAttribute("id",`box${boxId}`);
 
-//         m.appendChild(square);
-//         boxId++;
-//     }
-// }
 const player1 = { 
         color : "blue",
         pawns : [{
@@ -247,13 +216,6 @@ const player1 = {
                 }]
         }
 
-
-// let player1 = {
-//     color : "blue",
-//     pawns : {
-//         flag : {name : "flag", abr : "F",  loc : 440},
-//     }
-// }
 for(key of player1.pawns){
     
     console.log(`box-${key.loc}`);
@@ -269,8 +231,6 @@ for(key of player1.pawns){
     targetSpace.appendChild(newDiv);
 
 }
-
-
 
 </script>
 
