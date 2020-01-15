@@ -105,6 +105,8 @@
     height: 30px;
     transform: rotate(45deg);
     border: solid 1px black;
+    z-index: 10;
+    position: relative;
 
 }
 
@@ -127,7 +129,9 @@
     height: 30px;
     transform: rotate(45deg);
     border: solid 1px black;
-
+    margin: 8px;
+    z-index: 10;
+    position: relative;
 }
 
 .bluePiece:hover {
@@ -170,8 +174,8 @@ div.square:hover  {
 
 document.body.style.backgroundColor = "#2e2e2e";
 var i = 1,
-    rows = 19,
-    cols = 28,
+    rows = 18,
+    cols = 27,
     boardDiv =  document.getElementById("board");
 //---------CREATES GRID-------//
 for(let y = 0; y <= rows ; y++){
@@ -209,11 +213,21 @@ let m = document.getElementById("boardGame"),
 
 const player1 = { 
         color : "blue",
-        pawns : [{
+        pawns : [
+                //blue flag//
+                {
                     name : "flag",
                     abr : "F",
                     loc: 440
-                }]
+                },
+                //blue bomb 1//
+                {
+                    name : "bomb1",
+                    abr : "B",
+                    loc : "348"
+                }
+
+                ]
         }
 
 for(key of player1.pawns){
@@ -223,10 +237,11 @@ for(key of player1.pawns){
     let newDiv = document.createElement("div");
     console.log(key.loc)
     console.log(newDiv);
-
+    newDiv.addEventListener("click", pickUpPiece);
     newDiv.className = `${player1.color}Piece`;
     newDiv.id = `${player1.color}${key.name}`;
     newDiv.innerHTML = `<span>${key.abr}</span>`;
+    
 
     targetSpace.appendChild(newDiv);
 
