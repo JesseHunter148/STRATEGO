@@ -99,12 +99,13 @@ var i = 1,
 for(let y = 0; y <= rows ; y++){
     let r = document.createElement("div");
         r.setAttribute("class", "row");
-        r.addEventListener("click", dropPiece)
+        r.addEventListener("click", dropPiece(this))
     for(let x = 0 ; x <= cols ; x++ ){
         let square = document.createElement("div");
             //modify squares parameters here e.g. :
             square.setAttribute("class", "square");
             square.setAttribute("id", `box-${i}`);
+            square.setAttribute("data-occupied", "false");
             
         r.appendChild(square);
         i++;
@@ -116,8 +117,21 @@ function pickUpPiece(){
     console.log("Picked up")
 }
 
-function dropPiece(){
-console.log('Dropped')
+function dropPiece(x){
+    if(isOccupied(x)){ //space is occupied
+        console.log('Occupado');
+    } else { // space is empty
+        console.log('Dropped');
+    }
+
+}
+
+function isOccupied(x){
+    // if(x.getAttribute("data-occupied") = true){
+    //     return true;
+    // } else {
+    //     return false;
+    // }
 }
 
 let m = document.getElementById("boardGame"),
@@ -554,9 +568,9 @@ for(key of player1.pawns){
     newDiv.id = `${player1.color}${key.name}`;
     newDiv.innerHTML = `<span>${key.abr}</span>`;
     
-
+    
     targetSpace.appendChild(newDiv);
-
+    targetSpace.setAttribute("data-occupied", "true");
 }
 
 for(key of player2.pawns){
