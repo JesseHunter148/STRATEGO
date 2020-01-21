@@ -560,6 +560,7 @@ for(key of player1.pawns){
     
     console.log(`box-${key.loc}`);
     let targetSpace = document.getElementById(`box-${key.loc}`)
+    
     let newDiv = document.createElement("div");
     console.log(key.loc)
     console.log(newDiv);
@@ -568,9 +569,9 @@ for(key of player1.pawns){
     newDiv.id = `${player1.color}${key.name}`;
     newDiv.innerHTML = `<span>${key.abr}</span>`;
     
-    
-    targetSpace.appendChild(newDiv);
     targetSpace.setAttribute("data-occupied", "true");
+    targetSpace.appendChild(newDiv);
+    
 }
 
 for(key of player2.pawns){
