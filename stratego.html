@@ -559,6 +559,22 @@ for(key of player1.pawns){
 
 }
 
+for(key of player2.pawns){
+    
+    console.log(`box-${key.loc}`);
+    let targetSpace = document.getElementById(`box-${key.loc}`)
+    let newDiv = document.createElement("div");
+    console.log(key.loc)
+    console.log(newDiv);
+    newDiv.addEventListener("click", pickUpPiece);
+    newDiv.className = `${player2.color}Piece`;
+    newDiv.id = `${player2.color}${key.name}`;
+    newDiv.innerHTML = `<span>${key.abr}</span>`;
+    
+
+    targetSpace.appendChild(newDiv);
+
+}
 
 </script>
 
