@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Stratego by Jesse and Tabor</title>
+
+</head>
+
+<style> 
+
+#board {
+    position: relative;
+    width:1375px;
+    margin: 0 auto;
+}
+
+.redPiece {
+    background-color: rgb(117, 0, 0);
+    width: 30px;
+    height: 30px;
+    transform: rotate(45deg);
+    border: solid 1px black;
+    margin: 8px;
+    z-index: 10;
+    position: relative;
+
+}
+
+.redPiece:hover {
+    cursor: pointer;
+}
+
+.redPiece span {
+    display: inline-block;
+    transform: rotate(-45deg);
+    color: rgb(88, 0, 0);
+    position: relative;
+    top: 5px;
+    left: 10px;
+}
+
+.bluePiece {
+    background-color: rgb(21, 0, 207);
+    width: 30px;
+    height: 30px;
+    transform: rotate(45deg);
+    border: solid 1px black;
+    margin: 8px;
+    z-index: 10;
+    position: relative;
+}
+
+.bluePiece:hover {
+    cursor: pointer;
+}
+
+.bluePiece span {
+    display: inline-block;
+    transform: rotate(-45deg);
+    color: rgb(0, 36, 104);
+    position: relative;
+    top: 5px;
+    left: 10px;
+}
+
+div.row{
+    display: flex;
+    flex-direction: row;
+}
+div.square {
+    height: 49px;
+    width: 49px;
+    box-sizing: border-box;
+    border: solid 1px rgb(151, 252, 0);
+
+}
+div.square:hover  {
+    cursor: pointer
+}
+
+</style>
+
+<body>
+
+<div id="board">
+
+</div>
+
+    <script>    
+
+document.body.style.backgroundColor = "#2e2e2e";
+var i = 1,
+    rows = 18,
+    cols = 27,
+    boardDiv =  document.getElementById("board");
+//---------CREATES GRID-------//
+for(let y = 0; y <= rows ; y++){
+    let r = document.createElement("div");
+        r.setAttribute("class", "row");
+        r.addEventListener("click", dropPiece(this))
+    for(let x = 0 ; x <= cols ; x++ ){
+        let square = document.createElement("div");
+            //modify squares parameters here e.g. :
+            square.setAttribute("class", "square");
+            square.setAttribute("id", `box-${i}`);
+            square.setAttribute("data-occupied", "false");
+            
+        r.appendChild(square);
+        i++;
+    }
+    boardDiv.appendChild(r);
+}
+
+function pickUpPiece(){
+    console.log("Picked up")
+}
+
+function dropPiece(x){
+    if(isOccupied(x)){ //space is occupied
+        console.log('Occupado');
+    } else { // space is empty
+        console.log('Dropped');
+    }
+
+}
+
+function isOccupied(x){
+    // if(x.getAttribute("data-occupied") = true){
+    //     return true;
+    // } else {
+    //     return false;
+    // }
+}
+
+let m = document.getElementById("boardGame"),
+    sqrSize = 49,
+    yEnd = 974,
+    yStart = 69,
+    xStart = 113,
+    xEnd = 1474,
+    boxId = 0;
+
+
+const player1 = { 
+        color : "blue",
+        pawns : [
+                   //BLUEPEICES//
+                {
+                    name : "flag",
+                    abr : "F",
+                    loc: 440
+                },
+                {
+                    name : "bomb1",
+                    abr : "B",
+                    loc : "348"
+                },
+                {
+                    name : "bomb2",
+                    abr : "B",
+                    loc : 354
+                },
+                {
+                    name : "bomb3",
+                    abr : "B",
+                    loc : 414
+                },
+                {
+                    name : "bomb4",
+                    abr : "B",
+                    loc : 417
+                },
+                {
+                    name : "bomb5",
+                    abr : "B",
+                    loc : 435
+                },
+                {
+                    name : "bomb6",
+                    abr : "B",
+                    loc : 458
+                },
+                {
+                    name : "spy",
+                    abr : "S",
+                    loc : 402
+                },
+                {
+                    name : "scout1",
+                    abr : "2",
+                    loc : 343
+                },
+                {
+                    name : "scout2",
+                    abr : "2",
+                    loc : 353
+                },
+                {
+                    name : "scout3",
+                    abr : "2",
+                    loc : 355
+                },
+                {
+                    name : "scout4",
+                    abr : "2",
+                    loc : 357
+                },
+                {
+                    name : "scout5",
+                    abr : "2",
+                    loc : 362
+                },
+                {
+                    name : "scout6",
+                    abr : "2",
+                    loc : 376
+                },
+                {
+                    name : "scout7",
+                    abr : "2",
+                    loc : 409
+                },
+                {
+                    name : "scout8",
+                    abr : "2",
+                    loc : 469
+                },
+                {
+                    name : "miner1",
+                    abr : "3",
+                    loc : 341
+                },
+                {
+                    name : "miner2",
+                    abr : "3",
+                    loc : 371
+                },
+                {
+                    name : "miner3",
+                    abr : "3",
+                    loc : 432
+                },
+                {
+                    name : "miner4",
+                    abr : "3",
+                    loc : 457
+                },
+                {
+                    name : "miner5",
+                    abr : "3",
+                    loc : 467
+                },
+                {
+                    name : "sergeant1",
+                    abr : "4",
+                    loc : 367
+                },
+                {
+                    name : "sergeant2",
+                    abr : "4",
+                    loc : 401
+                },
+                {
+                    name : "sergeant3",
+                    abr : "4",
+                    loc : 411
+                },
+                {
+                    name : "sergeant4",
+                    abr : "4",
+                    loc : 446
+                },
+                {
+                    name : "lieutenant1",
+                    abr : "5",
+                    loc : 372
+                },
+                {
+                    name : "lieutenant2",
+                    abr : "5",
+                    loc : 403
+                },
+                {
+                    name : "lieutenant3",
+                    abr : "5",
+                    loc : 472
+                },
+                {
+                    name : "lieutenant4",
+                    abr : "5",
+                    loc : 437
+                },
+                {
+                    name : "captian1",
+                    abr : "6",
+                    loc : 349
+                },
+                {
+                    name : "captian2",
+                    abr : "6",
+                    loc : 379
+                },
+                {
+                    name : "captian3",
+                    abr : "6",
+                    loc : 427
+                },
+                {
+                    name : "captian4",
+                    abr : "6",
+                    loc : 483
+                },
+                {
+                    name : "major1",
+                    abr : "7",
+                    loc : 380
+                },
+                {
+                    name : "major2",
+                    abr : "7",
+                    loc : 443
+                },
+                {
+                    name : "major3",
+                    abr : "7",
+                    loc : 459
+                },
+                {
+                    name : "colonel1",
+                    abr : "8",
+                    loc : 350
+                },
+                {
+                    name : "colonel2",
+                    abr : "8",
+                    loc : 396
+                },
+                {
+                    name : "general",
+                    abr : "9",
+                    loc : 410
+                },
+                {
+                    name : "marshall",
+                    abr : "10",
+                    loc : 345
+                },
+                ]
+    }
+                const player2 = { 
+        color : "red",
+        pawns : [
+                   //REDPEICES//
+                {
+                    name : "flag",
+                    abr : "F",
+                    loc: 43
+                },
+                {
+                    name : "bomb1",
+                    abr : "B",
+                    loc : 37
+                },
+                {
+                    name : "bomb2",
+                    abr : "B",
+                    loc : 48
+                },
+                {
+                    name : "bomb3",
+                    abr : "B",
+                    loc : 93
+                },
+                {
+                    name : "bomb4",
+                    abr : "B",
+                    loc : 96
+                },
+                {
+                    name : "bomb5",
+                    abr : "B",
+                    loc : 101
+                },
+                {
+                    name : "bomb6",
+                    abr : "B",
+                    loc : 104
+                },
+                {
+                    name : "spy",
+                    abr : "S",
+                    loc : 42
+                },
+                {
+                    name : "scout1",
+                    abr : "2",
+                    loc : 64
+                },
+                {
+                    name : "scout2",
+                    abr : "2",
+                    loc : 77
+                },
+                {
+                    name : "scout3",
+                    abr : "2",
+                    loc : 95
+                },
+                {
+                    name : "scout4",
+                    abr : "2",
+                    loc : 102
+                },
+                {
+                    name : "scout5",
+                    abr : "2",
+                    loc : 122
+                },
+                {
+                    name : "scout6",
+                    abr : "2",
+                    loc : 131
+                },
+                {
+                    name : "scout7",
+                    abr : "2",
+                    loc : 125
+                },
+                {
+                    name : "scout8",
+                    abr : "2",
+                    loc : 128
+                },
+                {
+                    name : "miner1",
+                    abr : "3",
+                    loc : 124
+                },
+                {
+                    name : "miner2",
+                    abr : "3",
+                    loc : 129
+                },
+                {
+                    name : "miner3",
+                    abr : "3",
+                    loc : 120
+                },
+                {
+                    name : "miner4",
+                    abr : "3",
+                    loc : 103
+                },
+                {
+                    name : "miner5",
+                    abr : "3",
+                    loc : 133
+                },
+                {
+                    name : "sergeant1",
+                    abr : "4",
+                    loc : 121
+                },
+                {
+                    name : "sergeant2",
+                    abr : "4",
+                    loc : 123
+                },
+                {
+                    name : "sergeant3",
+                    abr : "4",
+                    loc : 130
+                },
+                {
+                    name : "sergeant4",
+                    abr : "4",
+                    loc : 132
+                },
+                {
+                    name : "lieutenant1",
+                    abr : "5",
+                    loc : 119
+                },
+                {
+                    name : "lieutenant2",
+                    abr : "5",
+                    loc : 126
+                },
+                {
+                    name : "lieutenant3",
+                    abr : "5",
+                    loc : 127
+                },
+                {
+                    name : "lieutenant4",
+                    abr : "5",
+                    loc : 134
+                },
+                {
+                    name : "captian1",
+                    abr : "6",
+                    loc : 92
+                },
+                {
+                    name : "captian2",
+                    abr : "6",
+                    loc : 105
+                },
+                {
+                    name : "captian3",
+                    abr : "6",
+                    loc : 91
+                },
+                {
+                    name : "captian4",
+                    abr : "6",
+                    loc : 106
+                },
+                {
+                    name : "major1",
+                    abr : "7",
+                    loc : 69
+                },
+                {
+                    name : "major2",
+                    abr : "7",
+                    loc : 72
+                },
+                {
+                    name : "major3",
+                    abr : "7",
+                    loc : 94
+                },
+                {
+                    name : "colonel1",
+                    abr : "8",
+                    loc : 97
+                },
+                {
+                    name : "colonel2",
+                    abr : "8",
+                    loc : 100
+                },
+                {
+                    name : "general",
+                    abr : "9",
+                    loc : 44
+                },
+                {
+                    name : "marshall",
+                    abr : "10",
+                    loc : 41
+                },
+                ]
+        }
+
+for(key of player1.pawns){
+    
+    console.log(`box-${key.loc}`);
+    let targetSpace = document.getElementById(`box-${key.loc}`)
+    let newDiv = document.createElement("div");
+    console.log(key.loc)
+    console.log(newDiv);
+    newDiv.addEventListener("click", pickUpPiece);
+    newDiv.className = `${player1.color}Piece`;
+    newDiv.id = `${player1.color}${key.name}`;
+    newDiv.innerHTML = `<span>${key.abr}</span>`;
+    
+    
+    targetSpace.appendChild(newDiv);
+    targetSpace.setAttribute("data-occupied", "true");
+}
+
+for(key of player2.pawns){
+    
+    console.log(`box-${key.loc}`);
+    let targetSpace = document.getElementById(`box-${key.loc}`)
+    let newDiv = document.createElement("div");
+    console.log(key.loc)
+    console.log(newDiv);
+    newDiv.addEventListener("click", pickUpPiece);
+    newDiv.className = `${player2.color}Piece`;
+    newDiv.id = `${player2.color}${key.name}`;
+    newDiv.innerHTML = `<span>${key.abr}</span>`;
+    
+
+    targetSpace.appendChild(newDiv);
+
+}
+
+</script>
+
+</body>
+</html>
