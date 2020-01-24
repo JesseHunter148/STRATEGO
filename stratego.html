@@ -79,9 +79,7 @@ div.square {
 div.square:hover  {
     cursor: pointer
 }
-div.square:empty{
-    display: none;
-}
+
 </style>
 
 <body>
@@ -108,17 +106,13 @@ for(let y = 0; y <= rows ; y++){
             square.setAttribute("class", "square");
             square.setAttribute("id", `box-${i}`);
             square.setAttribute("data-occupied", "false");
-        
             
         r.appendChild(square);
-        i++; 
-        var sqr = document.getElementById(`box-${i}`);    
+        i++;
     }
-    
+    boardDiv.appendChild(r);
 }
-if(document.querySelector('div.square').children.length > 0){
-    square.setAttribute("data-occupied", "true");
-}
+
 function pickUpPiece(){
     console.log("Picked up")
 }
@@ -562,13 +556,10 @@ const player1 = {
                 ]
         }
 
-
-
 for(key of player1.pawns){
     
     console.log(`box-${key.loc}`);
     let targetSpace = document.getElementById(`box-${key.loc}`)
-    
     let newDiv = document.createElement("div");
     console.log(key.loc)
     console.log(newDiv);
